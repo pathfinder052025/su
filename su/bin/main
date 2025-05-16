@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+var su = require('su');
+
+var {base}    = su;
+var {methods} = base;
+var {beautify,fs,moment,thenify} = methods;

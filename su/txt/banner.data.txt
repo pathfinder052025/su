@@ -1,0 +1,59 @@
+$URL
+  https:__patorjk.com_software/taag/#p=display&f=Big&t=Sudoku%0A
+$ATEXT
+        ___           ___           ___           ___           ___           ___
+       /\  \         /\__\         /\  \         /\  \         /\__\         /\__\
+      /::\  \       /:/  /        /::\  \       /::\  \       /:/  /        /:/  /
+     /:/\ \  \     /:/  /        /:/\:\  \     /:/\:\  \     /:/__/        /:/  /
+    _\:\~\ \  \   /:/  /  ___   /:/  \:\__\   /:/  \:\  \   /::\__\____   /:/  /  ___
+   /\ \:\ \ \__\ /:/__/  /\__\ /:/__/ \:|__| /:/__/ \:\__\ /:/\:::::\__\ /:/__/  /\__\
+   \:\ \:\ \/__/ \:\  \ /:/  / \:\  \ /:/  / \:\  \ /:/  / \/_|:|~~|~    \:\  \ /:/  /
+    \:\ \:\__\    \:\  /:/  /   \:\  /:/  /   \:\  /:/  /     |:|  |      \:\  /:/  /
+     \:\/:/  /     \:\/:/  /     \:\/:/  /     \:\/:/  /      |:|  |       \:\/:/  /
+      \::/  /       \::/  /       \::/__/       \::/  /       |:|  |        \::/  /
+       \/__/         \/__/         ~~            \/__/         \|__|         \/__/
+$BTEXT
+   .oooooo..o                   .o8            oooo
+  d8P'    `Y8                  *888            `888
+  Y88bo.      oooo  oooo   .oooo888   .ooooo.   888  oooo  oooo  oooo
+   `*Y8888o.  `888  `888  d88' `888  d88' `88b  888 .8P'   `888  `888
+       `*Y88b  888   888  888   888  888   888  888888.     888   888
+  oo     .d8P  888   888  888   888  888   888  888 `88b.   888   888
+  8**88888P'   `V88V*V8P' `Y8bod88P* `Y8bod8P' o888o o888o  `V88V*V8P'
+$SIGN
+  ✨ Features
+  ❤ Support
+  📝 Requirements
+  🚀 Getting_Started
+  🛫 Roadmap
+  √  Project_built
+  👌 Easy_to_use
+  💅 Fancy_output_with_fallback_for_minimal_environments
+  🔌 Pluggable_reporters_
+  💻 Consistent_command_line_interface_(CLI)_experience
+  🏷 Tag_support
+  🚏 Redirect_console_and_stdout/stderr_to_consola_and_easily_restore_redirect.
+  🌐 Browser_support
+  ⏯ Pause/Resume_support
+  👻 Mocking_support
+  👮‍♂️ Spam_prevention_by_throttling_logs
+  ❯_ Interactive_prompt_support_powered_by_clack
+$SIGN_D
+  ✨ Funktionen
+  ❤ Unterstützung
+  📝 Anforderungen
+  🚀 Erste_Schritte
+  🛫 Roadmap
+  √  Projekt_gebaut
+  👌 Einfach_zu_bedienen
+  💅 Ausgefallene_Ausgabe_mit_Fallback_für_minimale_Umgebungen
+  🔌 Steckbare_Reporter
+  💻 Konsistente_Erfahrung_mit_der_Befehlszeilenschnittstelle_(CLI).
+  🏷 Tag-Unterstützung
+  🚏 Leiten_Sie_Konsole_und_stdout/stderr_auf_consola_um_und_stellen_Sie_die_Weiterleitung_einfach_wieder_her.
+  🌐 Browser-Unterstützung
+  ⏯ Unterstützung_anhalten_fortsetzen
+  👻 Spottunterstützung
+  👮‍♂️ Spam-Schutz_durch_Drosselung_der_Protokolle
+  ❯_ Interaktiver_Prompt-Support
+$EOF

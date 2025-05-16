@@ -1,0 +1,227 @@
+/*jslint node: true, for: true */
+"use strict";
+// <root>/public/constants
+// creation: Wed Nov 20 2024 21:19:23 
+/*
+      ___           ___           ___           ___           ___           ___,
+     /\  \         /\__\         /\  \         /\  \         /\__\         /\__\,
+    /::\  \       /:/  /        /::\  \       /::\  \       /:/  /        /:/  /,
+   /:/\ \  \     /:/  /        /:/\:\  \     /:/\:\  \     /:/__/        /:/  /,
+  _\:\~\ \  \   /:/  /  ___   /:/  \:\__\   /:/  \:\  \   /::\__\____   /:/  /  ___,
+ /\ \:\ \ \__\ /:/__/  /\__\ /:/__/ \:|__| /:/__/ \:\__\ /:/\:::::\__\ /:/__/  /\__\,
+ \:\ \:\ \/__/ \:\  \ /:/  / \:\  \ /:/  / \:\  \ /:/  / \/_|:|~~|~    \:\  \ /:/  /,
+  \:\ \:\__\    \:\  /:/  /   \:\  /:/  /   \:\  /:/  /     |:|  |      \:\  /:/  /,
+   \:\/:/  /     \:\/:/  /     \:\/:/  /     \:\/:/  /      |:|  |       \:\/:/  /,
+    \::/  /       \::/  /       \::/__/       \::/  /       |:|  |        \::/  /,
+     \/__/         \/__/         ~~            \/__/         \|__|         \/__/
+*/
+
+const seeds = [  {
+        puzzle: '---------------------------------------------------------------------------------',
+      solution: '---------------------------------------------------------------------------------',
+    difficulty: 'empty',
+          time: 0.01
+  },  {
+        puzzle: 'bf.hiac.g.gi......a.hf.g...g.a.fi..ddef...i.b..b.a.g.ff...gbh..hac.........e.cfd.',
+      solution: 'bfdhiacegegicbdafhachfegdbighabfiecddefgchiabcibdaeghffdeagbhichacidfbgeibgehcfda',
+    difficulty: 'easy',
+          time: 0.106
+  },  {
+        puzzle: '....i.b...fc..a.h.eb....i.fcieg..ad...hd.e....d..a....f...b.e.i.......b..h..e....',
+      solution: 'hageifbcdifcbdagheebdchgiafciegfbadhaghdcefibbdfiahcegfcahbdegideifgchbaghbaeidfc',
+    difficulty: 'hard',
+          time: 0.108
+  },  {
+        puzzle: '.fbe.c....e.....a...g.ihb..gb.fhdc.eid.g.eahbch.....f.....ef.ga.g....e.i..hi.....',
+      solution: 'afbegcidhheidfbgacdcgaihbefgbafhdcieidfgceahbchebaidfgbidcefhgafgchdaebieahibgfcd',
+    difficulty: 'easy',
+          time: 0.112
+  },  {
+        puzzle: '.di..ac...b.cid.h...h..b.d.....f....h.d....fca...c.i..d....i.e.bh...cd.g.g...fac.',
+      solution: 'fdighacbeebgcidfhacahfebgdigecifhbadhidabgefcafbdceighdcabgihefbhfeacdigigehdfacb',
+    difficulty: 'medium',
+          time: 0.112
+  },  {
+        puzzle: 'hgad.e..b.cbf.ge...df.aih.....i.......d.ecai.g...fa....igadf....fe.i.....h.eg.fd.',
+      solution: 'hgadceifbicbfhgeadedfbaihcgcahibdgeffbdgecaihgeihfadbcbigadfchedfecihbgaahcegbfdi',
+    difficulty: 'easy',
+          time: 0.114
+  },  {
+        puzzle: '.h..c.f.ice.......b..ia........g.h......e...ff..h...i....b...eh..........ga..f..c',
+      solution: 'ahgdcefbiceigfbahdbfdiahcgediefgchabgbhaeidcffachbdeigicfbdagehedbchgifahgaeifbdc',
+    difficulty: 'expert',
+          time: 0.117
+  },  {
+        puzzle: '...cfa.ibf...i.......g...f..i..h.cd.gdf........cd..fb.......bc..gb...dhi...he..g.',
+      solution: 'dhecfagibfbgeidhaccaigbhefdbiafhecdggdfbaciehhecdgifbaafhidgbceegbacfdhiicdhebagf',
+    difficulty: 'medium',
+          time: 0.135
+  },  {
+        puzzle: '.....b.f.e.aih....bi....a....e...i...g.bf..a.....cihg.ic.fdhg.a..h...f.cgef.iad.b',
+      solution: 'dhcgabefiefaihcbdgbigdefachcaehgdibfhgibfecadfbdacihgeicbfdhgeaadhebgficgefciadhb',
+    difficulty: 'easy',
+          time: 0.146
+  },  {
+        puzzle: '...i..h.bc....b....g....a....gd.....e..h.f......b...ac.c......ha.....id..i..gd...',
+      solution: 'deficahgbchagfbdeibgiedhacffagdicbheebchafgididhbegfacgcdabiefhafbcheidghiefgdcba',
+    difficulty: 'expert',
+          time: 0.155
+  },  {
+        puzzle: '..a.i...cc.g.......h..e..a..a...ib...d..f..h...........i...d.f......g.c.dg...b..h',
+      solution: 'beagifhdccfghdaibeihdbecfaghafcgibedgdbafechiecidbhagfaihecdgfbfbeihgdcadgcfabeih',
+    difficulty: 'hard',
+          time: 0.161
+  },  {
+        puzzle: '.......hg.....h.d.a.g...ei..ce..dg..dbf.........bfid..hg...f....d..h...c..a.eg...',
+      solution: 'bedfiachgficeghbdaahgdbceificehadgfbdbfgceiahgahbfidcehgbcdfaeiediahbfgccfaieghbd',
+    difficulty: 'hard',
+          time: 0.196
+  },  {
+        puzzle: '..c.....d...g.i..h.i....b..ace......d..bh....b..f.........e.........bea..d..a..c.',
+      solution: 'gecabhifdfbagdicehhidefcbgaaceigdhbfdgfbheaicbhifcagdeiagcefdhbcfhdibeagedbhagfci',
+    difficulty: 'expert',
+          time: 0.196
+  },  {
+        puzzle: '...bf.i.......hc.aa..........g......h..c.e....i....bh....f...g..f.....e...hig.a..',
+      solution: 'chebfaidgfgdeihcbaabidcgefhbeghdifachafcbegiddicgafbheicafedhgbgfbahcdeiedhigbacf',
+    difficulty: 'expert',
+          time: 0.22
+  },  {
+        puzzle: 'e..f.b.......eid.f..h....b.ge.c.fadhab.ihgfe.hc..d....d.g...cf...eg..h.bf...i....',
+      solution: 'edcfgbihabgaheidcfifhdcaebggeicbfadhabdihgfechcfadebgidigbahcfecaegfdhibfhbeicgad',
+    difficulty: 'easy',
+          time: 0.236
+  },  {
+        puzzle: '.e.fh..a.g....ed...a..b.f...ih....dc........a....g....b...i...dhc.gf.....g......e',
+      solution: 'debfhciagghfiaedcbcaidbgfehaihbefgdcfbgcdiehaedchgabifbfaeihcgdhcegfdabiigdacbhfe',
+    difficulty: 'hard',
+          time: 0.248
+  },  {
+        puzzle: '......c..g.b..a.........g.h...e....gb..id.....i.f...eb....i...c.he.f.d..a......h.',
+      solution: 'edhbgicfagfbchaeidicadefgbhhafebcidgbegidhacfdicfaghebfgdhiebaccheafbdgiabigcdfhe',
+    difficulty: 'expert',
+          time: 0.265
+  },  {
+        puzzle: '.ica............bh....g..f..g...a...i.e....c.a...f......d..bg......c...e.fg....id',
+      solution: 'ficabhdeggeaidfcbhdhbegcifabgfceahdiidebhgacfachdfiegbeadfibghchbigcdfaecfghaebid',
+    difficulty: 'expert',
+          time: 0.278
+  },  {
+        puzzle: 'fg....i...h..f.e..e.bd..afh.f..hg..ic......b....f.c.....c.......eiac.gdf.b.....e.',
+      solution: 'fgaebhicdihdcfaegbecbdgiafhdfebhgcaicahidefbgbigfacdhegdchefbiaheiacbgdfabfgidhec',
+    difficulty: 'medium',
+          time: 0.304
+  },  {
+        puzzle: 'g..d..caf...g....ii.f..hg.bb.iaedhgc..afcg..d.g.b.....f.d..abc...b......c..h.bfia',
+      solution: 'gbhdiecafacegbfdhiidfcahgebbfiaedhgcehafcgibddgcbhiafefidegabchhabifcedgceghdbfia',
+    difficulty: 'easy',
+          time: 0.319
+  },  {
+        puzzle: 'g.hedcf...i.f..a..e..a.....c..i.deh.i.......g..g..e...a....f..c.cf.e.gi.b.......e',
+      solution: 'gahedcfbidicfbgaehefbaihcgdcbaigdehfihebfadcgfdghceiabaeighfbdchcfdebgiabgdcaihfe',
+    difficulty: 'medium',
+          time: 0.32
+  },  {
+        puzzle: '....g.......ci..bg.i.de.af.......beh.....fgdi...eb.f....ah..ig...hg.d...cd..a....',
+      solution: 'hacfgbdieefdciahbggibdehafcagfidcbehbceahfgdidhiebgfcafbahceigdiehgfdcabcdgbaiehf',
+    difficulty: 'medium',
+          time: 0.321
+  },  {
+        puzzle: '..f.d.i...g..b.a.d..c.a.....c.i...e...eh..g.........ac.........b...i.e....gf..d..',
+      solution: 'abfcdhigehgiebfacddecgaibhfgcdifahebfaehcbgdiihbdegfacefabgdcihbdhaicefgcigfhedba',
+    difficulty: 'hard',
+          time: 0.322
+  },  {
+        puzzle: '..ac.i......ah.d...e....i...a.e.bc....g..f..ad...gae..ig.fa......hd.e.g.c.d.b....',
+      solution: 'hdaceigfbbifahgdcegecbfdiahfaiedbchgehgicfbdadcbhgaeifigefachbdabhdiefgccfdgbhaei',
+    difficulty: 'medium',
+          time: 0.324
+  },  {
+        puzzle: 'a......g.b..di.a.f..e..ahi....a......bae........ichbaei...de......c.igd.d.h....ci',
+      solution: 'aidhefcgbbhgdicaeffcebgahidheiabgdfccbaefdihggdfichbaeiacgdefbhefbchigdadghfabeci',
+    difficulty: 'medium',
+          time: 0.324
+  },  {
+        puzzle: '..d.g.fi...e.ci.d.a....eg.....i...f...bg..ec.e..d..haig....f....ha........ch.g.e.',
+      solution: 'cbdaghfiehgefciadbaifbdeghcdahiecbfgifbghaecdecgdfbhaigeicafdbhbhaeidcgffdchbgiea',
+    difficulty: 'medium',
+          time: 0.332
+  },  {
+        puzzle: 'c.a...i...b..c..ede....g..c.e...dga..c...b..i..gf.....b.....ei......a.cg..ie....a',
+      solution: 'cfahdeigbgbhacifedeidbfgahchebcidgafacfgebhdiidgfahcbebacdgfeihfheibadcgdgiehcbfa',
+    difficulty: 'hard',
+          time: 0.348
+  },  {
+        puzzle: 'h...f............i..e...a.h.dhe...a...fh.b....i..c...gf.ga.di..a.i...d.bce......a',
+      solution: 'hgcifabdedabgehfciifebdcaghbdheigcafgcfhabeideiadcfhbgfbgahdiecahicgedfbcedfbigha',
+    difficulty: 'hard',
+          time: 0.368
+  },  {
+        puzzle: 'i..f..ec......a.fbg.b.i...h.d...ihg.....b...fe...a......d.....i...ie.b.......g...',
+      solution: 'iahfdbecgdcehgaifbgfbeicdahbdacfihgechgdbeaifeifgahcbdhbdacfgeifgciedbhaaeibhgfdc',
+    difficulty: 'hard',
+          time: 0.409
+  },  {
+        puzzle: '.h.i......i.........f..bh..b...a..ed.ca......i..f...h........c....he..f.ab..df...',
+      solution: 'ehbicdgafdigafhcbecafegbhdibghcaifedfcadheigbiedfbgahchfebiadcggdihecbfaabcgdfeih',
+    difficulty: 'expert',
+          time: 0.409
+  },  {
+        puzzle: '.bi.......c....e.........af...eba.....a.i.g......c..i....h.e..d.e......gc.b..f...',
+      solution: 'fbiaegdhcachdfbegiedgchibafgicebafdhbhafidgcedfegchaibiafhgecbdhedbacifgcgbidfhea',
+    difficulty: 'expert',
+          time: 0.444
+  },  {
+        puzzle: '.....d.h..h.....a.gb......i.....a..g....eh.c..i..d.....ge...a..d....f.....ab..i..',
+      solution: 'iacefdghbehdgibcafgbfhacedicehfbadigfdgiehbcaaibcdgfehbgedhiafcdciagfhbehfabceigd',
+    difficulty: 'expert',
+          time: 0.461
+  },  {
+        puzzle: '..e...c......i..g.......d.hbaf........cfhe..ie......f.h.d.c.....f.h....c...i.ga..',
+      solution: 'fdegbhciaacheidfgbibgcfadehbafdgihcedgcfhebaiehibacgfdhidacfebggfahebidccebidgahf',
+    difficulty: 'hard',
+          time: 0.571
+  },  {
+        puzzle: 'bi...ec..eg..h.fbdf........i.hba.dfe....ehbig..bf.d.h..f.e.a.c.....g.e..cde..f..a',
+      solution: 'bidgfecahegcahifbdfhadcbgeiichbagdfedafcehbiggebfidahchfgedaicbabihgcedfcdeibfhga',
+    difficulty: 'easy',
+          time: 0.595
+  },  {
+        puzzle: '.....ef.ha..bf..ecfe.gc...a....gbch..a..df.b..bi....f.h.af.gidbdf....g..i..c..ha.',
+      solution: 'bicdaefghahgbfidecfedgchbiaedfagbchicahidfebggbiehcafdhcafegidbdfbhiagceigecbdhaf',
+    difficulty: 'easy',
+          time: 0.613
+  },  {
+        puzzle: 'a....db...g.c....f..e.f..i.........i....h.f.d..g...ch...b..e.c.ca......h.d.......',
+      solution: 'afchidbegigdcebhafhbegfadicfehdgcabibcaehifgddigbafcheghbfdeicacafibgedhediachgfb',
+    difficulty: 'expert',
+          time: 0.63
+  },  {
+        puzzle: 'gfbc...dh.a.......d..a..fi..daifc..ech......f.......c.f...e..b...d.....i..igh.d..',
+      solution: 'gfbcieadhiahbdfcegdceaghfibbdaifcghechgebdiafeifhagbcdfgcdeihbahbdfcaegiaeighbdfc',
+    difficulty: 'medium',
+          time: 0.662
+  },  {
+        puzzle: '..fg..hec.ebc.......h.dfgabb..h.a.fg.g.df.i..f.a...b..hf....ad...if....hc.ea...bi',
+      solution: 'dafgbihecgebcahdifichedfgabbidhcaefgegcdfbihafhaigebcdhfgbicadeabifedcghcdeahgfbi',
+    difficulty: 'easy',
+          time: 0.673
+  },  {
+        puzzle: 'f....dha....b......a......dic...h......c..egb...........a.....ed..f.ec.g.fg......',
+      solution: 'febigdhachdcbfageigaiehcbfdicegbhadfahfcdiegbbgdaefichcbadigfhedihfaecbgefghcbdia',
+    difficulty: 'hard',
+          time: 0.728
+  },  {
+        puzzle: 'c..d.fgeb...g..i.hg.ih..da.a.g.b.cde.edc..a..b........i.e.cd.ha.fb.h.e.ch..e.....',
+      solution: 'cahdifgebedfgabichgbihecdafahgfbicdefedcghabibicadehfgigebcdfhadfbihaegchcaefgbid',
+    difficulty: 'easy',
+          time: 0.76
+  },  {
+        puzzle: '....d.a...a.ie...di......h.d.e..cg.b.b.e..i....c.i..dh..h.gf..c......b.g..i.ce.a.',
+      solution: 'ehfcdgabicabiehfgdigdfbachediehacgfbhbgefdicaafcgibedhbehagfdicfcadhibeggdibcehaf',
+    difficulty: 'medium',
+          time: 0.942
+  },
+];
+
+module.exports = seeds;

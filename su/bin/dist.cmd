@@ -1,0 +1,13 @@
+@ECHO off
+node ../su/dist/index.array.cjs
+node ../su/dist/index.base.cjs
+node ../su/dist/index.data.cjs
+node ../su/dist/index.emitter.cjs
+node ../su/dist/index.import.cjs
+node ../su/dist/index.lists.cjs
+node ../su/dist/index.parts.cjs
+node ../su/dist/index.symbols.cjs
+node ../su/dist/index.timer.cjs
+node ../su/dist/index.type.cjs
+node ../su/dist/index.unicode.cjs
+node ../su/dist/index.vars.cjs

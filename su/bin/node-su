@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+var args,dashdash,flags,same,silent,which;
+
+which = require('which');
+
+function usage () {
+  console.error('usage: su [-as] program ...');
+  process.exit(1);
+};
+
+function check(arg) {
+  if (dashdash || !/^-/.test(arg))    return(true);
+  if (arg === '--') {dashdash = true; return(false)};
+
+  flags = arg.slice(1).split('')
+  for (var flag,f=0; f < flags.length; f++) {
+    flag = flags[f];
+    switch (flag) {
+      case 's':	silent = true; 	break;
+      case 'a':	   same = true; 	break;
+      default:	console.error('su: illegal option -- ' + flag); usage();
+    }
+  };
+  return(false);
+};
+
+function pend(pv, current) {
+  try {
+    var f = which.sync(current, { all: same });
+    (same)? f = f.join('\n'):0;
+    (!silent)? console.log(f):0;
+    return pv;
+  } catch (e) {return(1)};
+};
+
+same     = false;
+silent   = false;
+dashdash = false;
+
+if (process.argv.length < 3) usage();
+
+args = process.argv.slice(2).filter(check);
+process.exit(args.reduce(pend, 0));
