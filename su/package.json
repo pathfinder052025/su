@@ -85,8 +85,9 @@
   },
   "scripts": {
     "test":           "tap",
-    "main":           "node  .\\main.cjs",
-    "timer":          "node  .\\dist\\index.timer.cjs",
+    "main":           "node .\\main.cjs",
+    "timer":          "node .\\bin\\timer.cjs",
+    "concertina":     "node .\\bin\\concertina.cjs   --test",
     "dist":           ".\\bin\\dist.cmd",
     "preversion":     "npm test",
     "postversion":    "npm publish",
