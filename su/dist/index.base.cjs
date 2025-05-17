@@ -419,7 +419,7 @@ SP.countNumber = function(mode=0,s='Z') {
 }
 AP.uniqueA = function() {
   var w, v9, v9='123456789'; 
-  w = [...this, ...v9].sort();
+  w = [... this].sort();
   while(!w[0] || !isFinite(w[0])) w.shift(); 
   w = w.join('');
   [...v9].map((n) => w = w.replace(eval(`/${n}{2,9}/g`),'')), 
