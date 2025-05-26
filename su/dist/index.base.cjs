@@ -12,7 +12,7 @@ var {sizeof,unicsub} = methods;
 var {ansi,beautify,colors,diff,em,Emitter,events,fs,funcloc,GkListener,julian,minimist,path,progress,thenify,types} = methods;
 var {argv, border, seed1, seed2, seedt, types} = se;
 var cursor = ansi(process.stdout);
-var {floor} = methods.lodash; 
+var {floor,pullAt}     = methods.lodash; 
 var {abs,random,round} = Math; 
 var {CHR, ORD} = global;
 
@@ -35,13 +35,17 @@ AP.maxLengh      = function(v)    {return(Math.max(...(this.map((s)=> s.length))
 
 FP.funcloc = async function(rc)   {await Promise.resolve(this).then(rc=await funcloc(this),this.__source = `../${rc.source.split('/').slice(-2).join('/')}[[${this.name}(${rc.line})}]`);return(this)};
 
-NP.convertLet    = function(n)    {return (this).toVektor(n).map((n) => CHR(+`${n+32}`))};
+NP.convertLet    = function(m)    {var v,p; p=(m==2)?0:32; v=(this).toVektor(0).map((n) => CHR(+`${n+p}`)); (m==1)?v=v.reverse():0; return(v)};
 NP.convertChr    = function()     {return (this).toVektor().map((n) => `${n+1}`.convertChr().toUpperCase())}; 
 NP.getRandomInt  = function()     {return floor(random() * this)};
 NP.getSign       = function()     {var sign, sy, n=this; sy=cursor.symbols.symbols._.split(','); sign = ["\u2588","\u2606",...sy]; return(n?sign[n-1]:[sign.shift(),sign[[sign.length].getRandomInt()]][1])}; 
 NP.toSpace       = function(s,c)  {c=c||' '; s=s||c; return(s.padEnd(this,c))};
+
 NP.toVektor      = function(n=0)  {return O1(' '.repeat(this+n)).numbers().slice(n)};
 AP.toVektor      = function(n=0)  {return(eval(`[${('0,'.repeat(this[0]))}]`).map((n)=>n++))};
+NP.toV           = function(m=0)  {var n=m; return(([...('0'.repeat(this))]).map(()=>(n++)))};
+AP.toM           = function(n)    {return((this.join('')).repeat(n))};
+
 NP.formatSize    = function(m)    {var bo, bs, bytes, dp, nr, nu, vu;
                                    bytes = this; bs = m ? 1000 : 1024, dp=1;
                                    if (abs(bytes) < bs) {return bytes + ' B'};
@@ -88,6 +92,7 @@ SP.usplit        = function()     {return(O1(this).map((n)=>unicsub(this,+n,(+n)
 NP.space         = function(s=' '){return(s.repeat(this))};
 AP.arrayShift    = function(m)    {var v=this; (m)?v.unshift(v.pop()):v.push(v.shift()); return(v)};
 SP.strShift      = function(m)    {var v=[...this]; v.arrayShift(m); return(v.join(''))};
+AP.pullAt        = function(p,m)  {var v=(m)?JP(JS(this[0])):this[0]; return(pullAt(v,p))};
 AP.uniNums       = ['⓿❶❷❸❹❺❻❼❽❾','🄌➊➋➌➍➎➏➐➑➒','０１２３４５６７８９','⓪①②③④⑤⑥⑦⑧⑨'];
 NP.uniNums       = function()     {var v=(4).toVektor().each(AP.uniNums).each((s)=>s.usplit());return((!this)?v:v[this-1])};
 AP.uniSign       = function(s)    {return (O2(this.map((s) => [s, eval(`${s}:'${s}'.uniSign()`)])))};
@@ -375,6 +380,7 @@ SP.ordElement    = function()     {return (this.match(/[a-z]/))? ORD(this,1)+1:t
 SP.pathNormalize = function()     {return (this.startsWith(`..`) ?(path.normalize(__dirname+`\\`+this)) :this)}
 SP.renDataName   = function(s)    {return this.filePath().dir+this.filePath().file.replace(/\.([\w]{3})data\./, `.${s}.data.`)};
 SP.splice        = function(...p) {var va=[...this]; va.splice(...p); return(va.join(''))};
+SP.splices       = function(v,s)  {var w=this; v.map((n)=> w=w.splice(n,0,s)); return(w)};
 SP.stringToHex   = function()     {return Buffer.from(this, 'utf8').toString('hex')};
 SP.timerOff      = function()     {return (`${this}`.timerMessure(0))};
 SP.timerOn       = function(n=1)  {return (`${this}`.timerMessure(n))}; 
